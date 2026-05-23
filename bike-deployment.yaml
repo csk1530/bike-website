@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: bike-website-deployment
+  labels:
+    app: bike-website
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: bike-website
+
+  template:
+    metadata:
+      labels:
+        app: bike-website
+
+    spec:
+      containers:
+      - name: bike-website-container
+
+        # Replace with your Docker image
+        image: bike-app:v1.0.0
+
+        ports:
+        # Change port if your app runs on another port
+        - containerPort: 80
